@@ -29,12 +29,19 @@ def criar_tarefa(tarefa: schemas.TarefaCreate, db: Session = Depends(get_db)):
     return nova_tarefa
 
 @router.get("/", response_model=List[schemas.TarefaResponse])
-def listar_tarefas(db: Session = Depends(get_db)):
+def listar_tarefas(concluida: bool = None, db: Session = Depends(get_db)):
     """
-    Lista todas as tarefas
+    Lista todas as tarefas. Pode filtrar por status usando o parâmetro 'concluida'.
     """
-    tarefas = db.query(models.Tarefa).all()
+    query = db.query(models.Tarefa)
+
+    if concluida is not None:
+        query = query.filter(models.Tarefa.concluida == concluida)
+
+    tarefas = query.all()
     return tarefas
+
+
 
 @router.get("/{tarefa_id}", response_model=schemas.TarefaResponse)
 def buscar_tarefa(tarefa_id: int, db: Session = Depends(get_db)):
