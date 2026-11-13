@@ -35,10 +35,10 @@ Esta é uma API completa de gerenciamento de tarefas (To-Do List) que permite cr
 
 ## 📁 Estrutura do Projeto
 
-```bash
+```
 todo-api/
 ├── app/
-│   ├── init.py
+│   ├── __init__.py
 │   ├── main.py          # Ponto de entrada da aplicação
 │   ├── models.py        # Modelos do banco de dados
 │   ├── schemas.py       # Schemas de validação (Pydantic)
@@ -61,9 +61,10 @@ todo-api/
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/SEU-USUARIO/todo-api.git
+git clone https://github.com/PointycarlosE/todo-api.git
 cd todo-api
 ```
+
 2. **Crie e ative o ambiente virtual**
 ```bash
 # Linux/Mac
@@ -74,64 +75,87 @@ source venv/bin/activate
 python -m venv venv
 venv\Scripts\activate
 ```
+
 3. **Instale as dependências**
 ```bash
-pip install -r requiriments.txt
+pip install -r requirements.txt
 ```
+
 4. **Execute a aplicação**
 ```bash
 uvicorn app.main:app --reload
 ```
-5. **Acesse a documentação Interativa**
-Abra seu navegador em: http://127.0.0.1:8000/docs
 
-Documentação da API
-Endpoints disponíveis:
-Método	Endpoint	Descrição
-POST	/tarefas/	Cria uma nova tarefa
-GET	/tarefas/	Lista todas as tarefas
-GET	/tarefas/{id}	Busca uma tarefa específica
-PUT	/tarefas/{id}	Atualiza uma tarefa
-PATCH	/tarefas/{id}/concluir	Marca/desmarca como concluída
-DELETE	/tarefas/{id}	Deleta uma tarefa
-Exemplos de uso:
-Criar uma tarefa
+5. **Acesse a documentação interativa**
 
+Abra seu navegador em: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+## 📚 Documentação da API
+
+### Endpoints disponíveis:
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/tarefas/` | Cria uma nova tarefa |
+| GET | `/tarefas/` | Lista todas as tarefas |
+| GET | `/tarefas/{id}` | Busca uma tarefa específica |
+| PUT | `/tarefas/{id}` | Atualiza uma tarefa |
+| PATCH | `/tarefas/{id}/concluir` | Marca/desmarca como concluída |
+| DELETE | `/tarefas/{id}` | Deleta uma tarefa |
+
+### Exemplos de uso:
+
+#### Criar uma tarefa
+```bash
 curl -X POST "http://127.0.0.1:8000/tarefas/" \
   -H "Content-Type: application/json" \
   -d '{
     "titulo": "Estudar FastAPI",
     "descricao": "Aprender a criar APIs REST"
   }'
-Listar todas as tarefas
+```
 
+#### Listar todas as tarefas
+```bash
 curl -X GET "http://127.0.0.1:8000/tarefas/"
-Marcar como concluída
+```
 
+#### Marcar como concluída
+```bash
 curl -X PATCH "http://127.0.0.1:8000/tarefas/1/concluir"
-🧪 Testando a API
+```
+
+## 🧪 Testando a API
+
 Acesse a documentação interativa (Swagger UI) em:
-
-
+```
 http://127.0.0.1:8000/docs
+```
+
 Lá você pode testar todos os endpoints diretamente pelo navegador!
 
-🎯 Próximas Melhorias
- Adicionar autenticação JWT
- Implementar filtros (listar só concluídas/pendentes)
- Adicionar paginação
- Adicionar categorias/tags
- Implementar data de vencimento
- Adicionar testes automatizados
- Migrar para PostgreSQL
- Deploy em produção
-📝 Licença
+## 🎯 Próximas Melhorias
+
+- [ ] Adicionar autenticação JWT
+- [ ] Implementar filtros (listar só concluídas/pendentes)
+- [ ] Adicionar paginação
+- [ ] Adicionar categorias/tags
+- [ ] Implementar data de vencimento
+- [ ] Adicionar testes automatizados
+- [ ] Migrar para PostgreSQL
+- [ ] Deploy em produção
+
+## 📝 Licença
+
 Este projeto está sob a licença MIT.
 
-👤 Autor
-Carlos Eduardo Martins Rodrigues
+## 👤 Autor
 
-GitHub: @PointycarlosE
-LinkedIn: https://www.linkedin.com/in/carlos-martins-rodrigues/
+**Carlos Eduardo Martins Rodrigues**
+
+- GitHub: [@PointycarlosE](https://github.com/PointycarlosE)
+- LinkedIn: [Carlos Martins Rodrigues](https://www.linkedin.com/in/carlos-martins-rodrigues/)
+
+---
+
 ⭐ Se este projeto te ajudou, considere dar uma estrela!
-
